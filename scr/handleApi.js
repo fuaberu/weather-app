@@ -1,22 +1,21 @@
-// import { clearDay } from './app';
-
-// display
 const displayCity = document.querySelector('.display-city');
 const displayTime = document.querySelector('.display-time');
 const currentTempreture = document.querySelector('.current-tempreture');
 const maxMin = document.querySelector('.max-min');
 const currentWeather = document.querySelector('.current-weather');
+const currentIcon = document.querySelector('.current-icon');
 
 // days of the week
 const todayDay = document.querySelectorAll('.day-week');
 const todayDate = document.querySelectorAll('.date-of-the-day');
 const todayDiscription = document.querySelectorAll('.today-discription');
 const todayMaxMin = document.querySelectorAll('.today-max-min');
-const weekdayIcons = document.querySelectorAll('.weekday-icon');
+const weekdayIcon = document.querySelectorAll('.weekday-icon');
 
 // hours
 const hour = document.querySelectorAll('.hour');
 const hourTemp = document.querySelectorAll('.hour-temp');
+const hourlyIcon = document.querySelectorAll('.hourly-icon');
 
 // general information
 const probabPrecipitation = document.querySelector('#probab-precipitation');
@@ -28,6 +27,15 @@ const uv = document.querySelector('#uv');
 const visibility = document.querySelector('#visibility');
 const feelsLike = document.querySelector('.feels-like');
 
+// functions
+function icon(code, time, sunset, sunrise) {
+	if (time > sunset || time < sunrise) {
+		return `wi-owm-night-${code}`;
+	} else if (time < sunset && time > sunrise) {
+		return `wi-owm-day-${code}`;
+	}
+}
+
 async function getData(lat, lon) {
 	const response = await fetch(
 		`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
@@ -38,8 +46,18 @@ async function getData(lat, lon) {
 	//-------display current------//
 
 	//display the time
-	let time = new Date(data.current.dt * 1000);
+	let time = new Date(data.current.dt * 1000).toISOString();
 	displayTime.innerText = time;
+
+	//display icon
+	currentIcon.classList.add(
+		icon(
+			data.current.weather[0].id,
+			data.current.dt,
+			data.current.sunset,
+			data.current.sunrise
+		)
+	);
 
 	//diaplay current temperature
 	currentTempreture.innerText = `${Math.round(data.current.temp)}\xB0`;
@@ -85,8 +103,16 @@ async function getData(lat, lon) {
 		)}\xB0 / ${Math.round(data.daily[i].temp.min)}\xB0`;
 	}
 
-	for (let i = 0; i < weekdayIcons.length; i++) {
-		weekdayIcons[i].innerHtml = clearDay;
+	//weekday icon
+	for (let i = 0; i < weekdayIcon.length; i++) {
+		weekdayIcon[i].classList.add(
+			icon(
+				data.daily[i].weather[0].id,
+				data.daily[i].dt,
+				data.daily[i].sunset,
+				data.daily[i].sunrise
+			)
+		);
 	}
 
 	//-------display hours------//
@@ -102,6 +128,18 @@ async function getData(lat, lon) {
 		hourTemp[i].innerText = `${Math.round(data.hourly[i].temp)}\xB0`;
 	}
 
+	// hour icon
+	for (let i = 0; i < hourlyIcon.length; i++) {
+		hourlyIcon[i].classList.add(
+			icon(
+				data.hourly[i].weather[0].id,
+				data.hourly[i].dt,
+				data.current.sunset,
+				data.current.sunrise
+			)
+		);
+	}
+
 	//-------display general information------//
 	//Precipitation Probability
 	probabPrecipitation.innerText = data.daily[0].pop * 100 + ' %';
@@ -113,7 +151,7 @@ async function getData(lat, lon) {
 	windDirection.innerText = data.current.wind_deg;
 
 	//wind Value
-	windValue.innerText = data.current.wind_speed;
+	windValue.innerText = `${data.current.wind_speed} km/h`;
 
 	//humidity
 	humidity.innerText = data.current.humidity + ' %';
@@ -147,4 +185,4 @@ async function getData(lat, lon) {
 
 	console.log(data);
 }
-getData(7.1188, 34.8814);
+getData(51.5074, 0.1278);
