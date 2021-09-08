@@ -1,1 +1,316 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="/index.5564bb8a.js" defer></script><script src="/index.ed273923.js"></script><link rel="stylesheet" href="/index.b76e1ad2.css"><link rel="stylesheet" href="/index.cfaa8404.css"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><title>Weather App</title></head><body> <main> <section class="weather-display-container"> <div class="city-name-container flex"> <h1 class="display-city">London</h1> <button onclick="openPopup('mySettings')"> <i class="material-icons small">settings</i> </button> </div> <div class="flex new-city-time"> <div class="flex"> <button id="my-location"> <i class="material-icons small">location_on</i> </button> <form action=""> <input type="text" id="city-location" placeholder="Search Location"> <button type="submit"> <i class="material-icons small">search</i> </button> </form> </div> <h3 class="display-time"></h3> </div> <div class="current-tempreture-container flex"> <div><i class="current-icon wi"></i></div> <h2 class="current-tempreture"></h2> </div> <h3 class="max-min"></h3> </section> <div class="settings-popup" id="mySettings"> <div class="settings-container"> <h2>Settings</h2> <button onclick="openPopup('temperature-form')">Temperature</button> <form action="" id="temperature-form" class="form-container"> <input type="radio" id="celsius" name="celsius" value="celsius"> <label for="celsius">Celsius - C°</label><br> <input type="radio" id="fahrenheit" name="fahrenheit" value="fahrenheit"> <label for="fahrenheit">Fahrenheit - F°</label><br> <div class="flex"> <button type="submit">Apply</button> <button class="cancel" type="button" onclick="closeForm('temperature-form')"> Cancel </button> </div> </form> <button onclick="openPopup('wind-form')">Wind</button> <form action="" id="wind-form" class="form-container"> <input type="radio" id="m-s" name="m/s" value="m/s"> <label for="m-s">Meters per second - m/s</label><br> <input type="radio" id="km-h" name="km/h" value="km/h"> <label for="km-h">Kilometers per hour - km/h</label><br> <input type="radio" id="ft-s" name="ft/s" value="ft/s"> <label for="ft-s">Feet per second - ft/s</label><br> <input type="radio" id="mi-h" name="mi/h" value="mi/h"> <label for="mi-h">Miles per hour - mi/h</label><br> <input type="radio" id="kts" name="kts" value="kts"> <label for="kts">Nautical miles per hour - kts</label><br> <div class="flex"> <button type="submit">Apply</button> <button class="cancel" type="button" onclick="closeForm('wind-form')"> Cancel </button> </div> </form> <button onclick="openPopup('precipitation-form')"> Precipitation </button> <form action="" id="precipitation-form" class="form-container"> <input type="radio" id="mm" name="mm" value="mm"> <label for="mm">Millimeters - mm</label><br> <input type="radio" id="in" name="in" value="in"> <label for="in">Inches - in</label><br> <div class="flex"> <button type="submit">Apply</button> <button class="cancel" type="button" onclick="closeForm('precipitation-form')"> Cancel </button> </div> </form> <button onclick="openPopup('visibility-form')">Visibility</button> <form action="" id="visibility-form" class="form-container"> <input type="radio" id="km" name="km" value="km"> <label for="km">Kilometers - km</label><br> <input type="radio" id="mi" name="mi" value="mi"> <label for="mi">Miles - mi</label><br> <div class="flex"> <button type="submit">Apply</button> <button class="cancel" type="button" onclick="closeForm('visibility-form')"> Cancel </button> </div> </form> <button type="button" class="close" onclick="closeForm('mySettings')"> Close </button> </div> </div> <section class="flex weekday-container"> <div class="weekday"> <h4 class="day-week"></h4> <h5 class="date-of-the-day"></h5> <div><i class="weekday-icon wi"></i></div> <p class="today-discription"></p> <p class="today-max-min"></p> </div> <div class="weekday"> <h4 class="day-week"></h4> <h5 class="date-of-the-day"></h5> <div><i class="weekday-icon wi"></i></div> <p class="today-discription"></p> <p class="today-max-min"></p> </div> <div class="weekday"> <h4 class="day-week"></h4> <h5 class="date-of-the-day"></h5> <div><i class="weekday-icon wi"></i></div> <p class="today-discription"></p> <p class="today-max-min"></p> </div> <div class="weekday"> <h4 class="day-week"></h4> <h5 class="date-of-the-day"></h5> <div><i class="weekday-icon wi"></i></div> <p class="today-discription"></p> <p class="today-max-min"></p> </div> <div class="weekday"> <h4 class="day-week"></h4> <h5 class="date-of-the-day"></h5> <div><i class="weekday-icon wi"></i></div> <p class="today-discription"></p> <p class="today-max-min"></p> </div> <div class="weekday"> <h4 class="day-week"></h4> <h5 class="date-of-the-day"></h5> <div><i class="weekday-icon wi"></i></div> <p class="today-discription"></p> <p class="today-max-min"></p> </div> <div class="weekday"> <h4 class="day-week"></h4> <h5 class="date-of-the-day"></h5> <div><i class="weekday-icon wi"></i></div> <p class="today-discription"></p> <p class="today-max-min"></p> </div> </section> <section class="flex weather-hourly-container"> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> <div class="hourly-weather"> <h4 class="hour"></h4> <div><i class="hourly-icon wi"></i></div> <p class="hour-temp"></p> </div> </section> <section class="general-information-container"> <div> <h3>Chance of rain</h3> <p id="probab-precipitation"></p> </div> <div> <h3>Feels Like</h3> <p class="feels-like"></p> </div> <div> <h3 id="wind"></h3> <p id="wind-value"></p> </div> <div> <h3>Humidity</h3> <p id="humidity"></p> </div> <div> <h3>UV</h3> <p id="uv"></p> </div> <div> <h3>Visibility</h3> <p id="visibility"></p> </div> </section> </main> </body></html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="/index.79f4f59a.js" defer=""></script>
+		<script src="/index.4a9a9ad3.js"></script>
+		<link rel="stylesheet" href="/index.f9d3699d.css">
+		<link rel="stylesheet" href="/index.84eff112.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<title>Weather App</title>
+	</head>
+	<body>
+		<main>
+			<section class="weather-display-container">
+				<div class="flex city-name-container">
+					<h1 class="display-city">London</h1>
+					<button onclick="openPopup('mySettings')">
+						<i class="small material-icons">settings</i>
+					</button>
+				</div>
+				<div class="new-city-time flex">
+					<div class="flex">
+						<button id="my-location">
+							<i class="small material-icons">location_on</i>
+						</button>
+						<form action="">
+							<input type="text" id="city-location" placeholder="Search Location">
+							<button type="submit">
+								<i class="small material-icons">search</i>
+							</button>
+						</form>
+					</div>
+					<h3 class="display-time"></h3>
+				</div>
+				<div class="current-tempreture-container flex">
+					<div><i class="current-icon wi"></i></div>
+					<h2 class="current-tempreture"></h2>
+				</div>
+				<h3 class="max-min"></h3>
+			</section>
+			<div class="settings-popup" id="mySettings">
+				<div class="settings-container">
+					<h2>Settings</h2>
+
+					<button onclick="openPopup('temperature-form')">Temperature</button>
+					<form action="" id="temperature-form" class="form-container">
+						<input type="radio" id="celsius" name="celsius" value="celsius">
+						<label for="celsius">Celsius - C°</label><br>
+						<input type="radio" id="fahrenheit" name="fahrenheit" value="fahrenheit">
+						<label for="fahrenheit">Fahrenheit - F°</label><br>
+						<div class="flex">
+							<button type="submit">Apply</button>
+							<button class="cancel" type="button" onclick="closeForm('temperature-form')">
+								Cancel
+							</button>
+						</div>
+					</form>
+					<button onclick="openPopup('wind-form')">Wind</button>
+					<form action="" id="wind-form" class="form-container">
+						<input type="radio" id="m-s" name="m/s" value="m/s">
+						<label for="m-s">Meters per second - m/s</label><br>
+						<input type="radio" id="km-h" name="km/h" value="km/h">
+						<label for="km-h">Kilometers per hour - km/h</label><br>
+						<input type="radio" id="ft-s" name="ft/s" value="ft/s">
+						<label for="ft-s">Feet per second - ft/s</label><br>
+						<input type="radio" id="mi-h" name="mi/h" value="mi/h">
+						<label for="mi-h">Miles per hour - mi/h</label><br>
+						<input type="radio" id="kts" name="kts" value="kts">
+						<label for="kts">Nautical miles per hour - kts</label><br>
+
+						<div class="flex">
+							<button type="submit">Apply</button>
+							<button class="cancel" type="button" onclick="closeForm('wind-form')">
+								Cancel
+							</button>
+						</div>
+					</form>
+					<button onclick="openPopup('precipitation-form')">
+						Precipitation
+					</button>
+					<form action="" id="precipitation-form" class="form-container">
+						<input type="radio" id="mm" name="mm" value="mm">
+						<label for="mm">Millimeters - mm</label><br>
+						<input type="radio" id="in" name="in" value="in">
+						<label for="in">Inches - in</label><br>
+
+						<div class="flex">
+							<button type="submit">Apply</button>
+							<button class="cancel" type="button" onclick="closeForm('precipitation-form')">
+								Cancel
+							</button>
+						</div>
+					</form>
+					<button onclick="openPopup('visibility-form')">Visibility</button>
+					<form action="" id="visibility-form" class="form-container">
+						<input type="radio" id="km" name="km" value="km">
+						<label for="km">Kilometers - km</label><br>
+						<input type="radio" id="mi" name="mi" value="mi">
+						<label for="mi">Miles - mi</label><br>
+
+						<div class="flex">
+							<button type="submit">Apply</button>
+							<button class="cancel" type="button" onclick="closeForm('visibility-form')">
+								Cancel
+							</button>
+						</div>
+					</form>
+					<button type="button" class="close" onclick="closeForm('mySettings')">
+						Close
+					</button>
+				</div>
+			</div>
+			<section class="weekday-container flex">
+				<div class="weekday">
+					<h4 class="day-week"></h4>
+					<h5 class="date-of-the-day"></h5>
+					<div><i class="weekday-icon wi"></i></div>
+					<p class="today-discription"></p>
+					<p class="today-max-min"></p>
+				</div>
+				<div class="weekday">
+					<h4 class="day-week"></h4>
+					<h5 class="date-of-the-day"></h5>
+					<div><i class="weekday-icon wi"></i></div>
+					<p class="today-discription"></p>
+					<p class="today-max-min"></p>
+				</div>
+				<div class="weekday">
+					<h4 class="day-week"></h4>
+					<h5 class="date-of-the-day"></h5>
+					<div><i class="weekday-icon wi"></i></div>
+					<p class="today-discription"></p>
+					<p class="today-max-min"></p>
+				</div>
+				<div class="weekday">
+					<h4 class="day-week"></h4>
+					<h5 class="date-of-the-day"></h5>
+					<div><i class="weekday-icon wi"></i></div>
+					<p class="today-discription"></p>
+					<p class="today-max-min"></p>
+				</div>
+				<div class="weekday">
+					<h4 class="day-week"></h4>
+					<h5 class="date-of-the-day"></h5>
+					<div><i class="weekday-icon wi"></i></div>
+					<p class="today-discription"></p>
+					<p class="today-max-min"></p>
+				</div>
+				<div class="weekday">
+					<h4 class="day-week"></h4>
+					<h5 class="date-of-the-day"></h5>
+					<div><i class="weekday-icon wi"></i></div>
+					<p class="today-discription"></p>
+					<p class="today-max-min"></p>
+				</div>
+				<div class="weekday">
+					<h4 class="day-week"></h4>
+					<h5 class="date-of-the-day"></h5>
+					<div><i class="weekday-icon wi"></i></div>
+					<p class="today-discription"></p>
+					<p class="today-max-min"></p>
+				</div>
+			</section>
+			<section class="weather-hourly-container flex">
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+				<div class="hourly-weather">
+					<h4 class="hour"></h4>
+					<div><i class="hourly-icon wi"></i></div>
+					<p class="hour-temp"></p>
+				</div>
+			</section>
+			<section class="general-information-container">
+				<div>
+					<h3>Chance of rain</h3>
+					<p id="probab-precipitation"></p>
+				</div>
+				<div>
+					<h3>Feels Like</h3>
+					<p class="feels-like"></p>
+				</div>
+				<div>
+					<h3 id="wind"></h3>
+					<p id="wind-value"></p>
+				</div>
+				<div>
+					<h3>Humidity</h3>
+					<p id="humidity"></p>
+				</div>
+				<div>
+					<h3>UV</h3>
+					<p id="uv"></p>
+				</div>
+				<div>
+					<h3>Visibility</h3>
+					<p id="visibility"></p>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
