@@ -1,3 +1,4 @@
+// display
 const displayCity = document.querySelector('.display-city');
 const displayTime = document.querySelector('.display-time');
 const currentTempreture = document.querySelector('.current-tempreture');
@@ -27,7 +28,25 @@ const uv = document.querySelector('#uv');
 const visibility = document.querySelector('#visibility');
 const feelsLike = document.querySelector('.feels-like');
 
+// variables
+let isUserLocation = false;
+
+//-------API fetch------//
+async function getData(lat, lon) {
+	const response = await fetch(
+		`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
+		{ mode: 'cors' }
+	);
+	const data = await response.json();
+	displayWeather(data);
+	console.log(data);
+}
+
+// site load
+getData(51.5074, 0.1278);
+
 // functions
+// icons function
 function icon(code, time, sunset, sunrise) {
 	if (time > sunset || time < sunrise) {
 		return `wi-owm-night-${code}`;
@@ -36,18 +55,65 @@ function icon(code, time, sunset, sunrise) {
 	}
 }
 
-async function getData(lat, lon) {
-	const response = await fetch(
-		`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
-		{ mode: 'cors' }
-	);
-	const data = await response.json();
+// get user current location
+function userLocation() {
+	isUserLocation = true;
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition((position) => {
+			getData(position.coords.latitude, position.coords.longitude);
+		});
+	} else {
+		alert('Geolocation is not supported by this browser.');
+	}
+}
+
+// convert time
+function convertTime(isoTime) {
+	var hours = parseInt(isoTime.substring(0, 2), 10),
+		minutes = isoTime.substring(3, 5),
+		ampm = 'AM';
+
+	if (hours == 12) {
+		ampm = 'PM';
+	} else if (hours == 0) {
+		hours = 12;
+	} else if (hours > 12) {
+		hours -= 12;
+		ampm = 'PM';
+	}
+
+	return hours + ':' + minutes + ' ' + ampm;
+}
+
+//-------display data in the ui------//
+
+function displayWeather(data) {
+	// city values
+	const now = new Date();
+	const utc = now.toISOString();
+	const utcTimeStamp = Date.parse(utc);
+	const cityTime = utcTimeStamp + data.timezone_offset * 1000;
 
 	//-------display current------//
 
+	//display the city name
+	// displayCity.innerText =
+
 	//display the time
-	let time = new Date(data.current.dt * 1000).toISOString();
-	displayTime.innerText = time;
+	let clockInterval = setInterval(() => {
+		const now = new Date();
+		const utc = now.toISOString();
+		const utcTimeStamp = Date.parse(utc);
+		const cityOffset = utcTimeStamp + data.timezone_offset * 1000;
+		const cityTimeUtc = new Date(cityOffset).toISOString();
+		console.log(convertTime(cityTimeUtc.slice(11,-5)));
+		displayTime.innerText = convertTime(cityTimeUtc.slice(11, -5));
+	}, 1000);
+
+	// stop interval
+	function stopInterval() {
+		clearInterval(clockInterval);
+	}
 
 	//display icon
 	currentIcon.classList.add(
@@ -117,11 +183,9 @@ async function getData(lat, lon) {
 
 	//-------display hours------//
 	for (let i = 0; i < hour.length; i++) {
-		let date = new Date(data.hourly[i].dt * 1000);
-		hour[i].innerText = date.toLocaleString('en-Us', {
-			hour: 'numeric',
-			hour12: true,
-		});
+		let date = cityTime + i * 3600000;
+		let hourDisplay = new Date(date).toISOString().slice(11, -11);
+		hour[i].innerText = hourDisplay;
 	}
 
 	for (let i = 0; i < hourTemp.length; i++) {
@@ -148,7 +212,27 @@ async function getData(lat, lon) {
 	feelsLike.innerText = `${Math.round(data.current.feels_like)}\xB0`;
 
 	//wind direction
-	windDirection.innerText = data.current.wind_deg;
+	const directionsArray = [
+		'N',
+		'NNE',
+		'NE',
+		'ENE',
+		'E',
+		'ESE',
+		'SE',
+		'SSE',
+		'S',
+		'SSW',
+		'SW',
+		'WSW',
+		'W',
+		'WNW',
+		'NW',
+		'NNW',
+		'N',
+	];
+	const angle = Math.round(0 / 22.5);
+	windDirection.innerText = directionsArray[angle % 16];
 
 	//wind Value
 	windValue.innerText = `${data.current.wind_speed} km/h`;
@@ -183,6 +267,9 @@ async function getData(lat, lon) {
 			? data.current.visibility / 1000 + ' km'
 			: data.current.visibility + ' m';
 
-	console.log(data);
+	//-------Event Listener------//
+	document.getElementById('my-location').addEventListener('click', () => {
+		userLocation();
+		stopInterval();
+	});
 }
-getData(51.5074, 0.1278);
