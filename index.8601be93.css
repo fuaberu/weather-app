@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(0deg, #fac26e 13%, #d04343 95%, #d02f2f 100%);
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  max-width: 600px;
+  margin: auto;
+}
+
+.weather-display-container {
+  width: 500px;
+  margin: auto;
+}
+
+.general-information-container {
+  display: grid;
+  grid-template-columns: 150px 150px;
+  grid-template-rows: repeat(3, 100px);
+}
+.general-information-container div {
+  text-align: center;
+}
+/*# sourceMappingURL=index.8601be93.css.map */
