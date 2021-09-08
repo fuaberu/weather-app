@@ -85,6 +85,15 @@ function convertTime(isoTime) {
 	return hours + ':' + minutes + ' ' + ampm;
 }
 
+//open and close forms
+function openPopup(id) {
+	document.getElementById(id).style.display = 'block';
+}
+
+function closeForm(id) {
+	document.getElementById(id).style.display = 'none';
+}
+
 //-------display data in the ui------//
 
 function displayWeather(data) {
@@ -129,9 +138,9 @@ function displayWeather(data) {
 	currentTempreture.innerText = `${Math.round(data.current.temp)}\xB0`;
 
 	//display current min and max temperature
-	maxMin.innerText = `${Math.round(data.daily[0].temp.max)}\xB0 / ${Math.round(
-		data.daily[0].temp.min
-	)}\xB0`;
+	maxMin.innerText = `${data.current.weather[0].main} ${Math.round(
+		data.daily[0].temp.max
+	)}\xB0 / ${Math.round(data.daily[0].temp.min)}\xB0`;
 
 	//-------display each day of the week------//
 
@@ -206,7 +215,7 @@ function displayWeather(data) {
 
 	//-------display general information------//
 	//Precipitation Probability
-	probabPrecipitation.innerText = data.daily[0].pop * 100 + ' %';
+	probabPrecipitation.innerText = Math.round(data.daily[0].pop * 100) + ' %';
 
 	//display current feeling temperature
 	feelsLike.innerText = `${Math.round(data.current.feels_like)}\xB0`;
