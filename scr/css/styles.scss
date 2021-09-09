@@ -6,13 +6,13 @@
 }
 body,
 html {
+	height: 100%;
 	background: linear-gradient(
 		0deg,
 		rgba(250, 194, 110, 1) 13%,
 		rgba(208, 67, 67, 1) 95%,
 		rgba(208, 47, 47, 1) 100%
 	);
-	height: 100%;
 	background-repeat: no-repeat;
 }
 i {
@@ -41,8 +41,8 @@ button {
 }
 .settings-popup {
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	width: auto;
+	height: auto;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -132,11 +132,14 @@ button {
 		justify-content: center;
 		align-items: center;
 		padding: 1rem;
+		p {
+			font-size: 3rem;
+		}
 	}
 	.max-min {
 		margin: auto;
 		width: fit-content;
-        margin-bottom: 1rem;
+		margin-bottom: 1rem;
 	}
 	button {
 		background-color: transparent;
@@ -153,20 +156,21 @@ button {
 	}
 }
 .weekday-container {
-	justify-content: space-evenly;
+	display: grid;
+    grid-template-columns: repeat(7, 14.2%);
+	padding: 1rem;
 	.weekday {
 		text-align: center;
 	}
 }
 .weather-hourly-container {
-	margin: 1rem auto;
 	padding: 1rem;
-	width: 100vw;
+	width: auto;
 	overflow-x: auto;
 	overflow-y: hidden;
 	border-bottom: 1px solid black;
 	border-top: 1px solid black;
-	.hourly-weather {
+	.hourly-weather:not(:last-child) {
 		margin-right: 1rem;
 	}
 }

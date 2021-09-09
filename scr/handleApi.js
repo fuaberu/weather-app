@@ -28,10 +28,13 @@ const uv = document.querySelector('#uv');
 const visibility = document.querySelector('#visibility');
 const feelsLike = document.querySelector('.feels-like');
 
+// form values
+let formData
+
 // variables
-let isUserLocation = false;
 
 //-------API fetch------//
+//get the weather data
 async function getData(lat, lon) {
 	const response = await fetch(
 		`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
@@ -42,10 +45,22 @@ async function getData(lat, lon) {
 	console.log(data);
 }
 
-// site load
-getData(51.5074, 0.1278);
 
-// functions
+//get city name from geolocation
+async function getCity(lat, lon) {
+	const response = await fetch(
+		`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
+		{ mode: 'cors' }
+	);
+	const cityName = await response.json();
+	console.log(cityName)
+	//display the city name
+	displayCity.innerText = `${cityName[0].name}, ${cityName[0].country}`;
+}
+
+// site load
+getData(51.5098, -0.118);
+//-------functions------//
 // icons function
 function icon(code, time, sunset, sunrise) {
 	if (time > sunset || time < sunrise) {
@@ -57,7 +72,6 @@ function icon(code, time, sunset, sunrise) {
 
 // get user current location
 function userLocation() {
-	isUserLocation = true;
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition((position) => {
 			getData(position.coords.latitude, position.coords.longitude);
@@ -103,10 +117,11 @@ function displayWeather(data) {
 	const utcTimeStamp = Date.parse(utc);
 	const cityTime = utcTimeStamp + data.timezone_offset * 1000;
 
-	//-------display current------//
 
-	//display the city name
-	// displayCity.innerText =
+	//-------display city name------//
+	getCity(data.lat, data.lon);
+
+	//-------display current------//
 
 	//display the time
 	let clockInterval = setInterval(() => {
@@ -135,7 +150,7 @@ function displayWeather(data) {
 	);
 
 	//diaplay current temperature
-	currentTempreture.innerText = `${Math.round(data.current.temp)}\xB0`;
+	currentTempreture.innerText = `${Math.round(data.current.temp)}`;
 
 	//display current min and max temperature
 	maxMin.innerText = `${data.current.weather[0].main} ${Math.round(
@@ -147,13 +162,13 @@ function displayWeather(data) {
 	//day of the week
 	for (let i = 0; i < todayDay.length; i++) {
 		const weekday = [
-			'Sunday',
-			'Monday',
-			'Tuesday',
-			'Wednesday',
-			'Thursday',
-			'Friday',
-			'Saturday',
+			'Sun',
+			'Mon',
+			'Tue',
+			'Wed',
+			'Thur',
+			'Fri',
+			'Sat',
 		];
 		let day = new Date().getDay();
 		todayDay[i].innerText =
@@ -269,7 +284,8 @@ function displayWeather(data) {
 		'Extreme',
 	];
 
-	uv.innerText = uvIndex[data.current.uvi];
+	uv.innerText = uvIndex[Math.round(data.current.uvi)];
+	console.log(Math.round(data.current.uvi));
 	//visibility
 	visibility.innerText =
 		data.current.visibility > 1000
