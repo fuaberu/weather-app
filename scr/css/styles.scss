@@ -157,7 +157,7 @@ button {
 }
 .weekday-container {
 	display: grid;
-    grid-template-columns: repeat(7, 14.2%);
+	grid-template-columns: repeat(7, 14.2%);
 	padding: 1rem;
 	.weekday {
 		text-align: center;
@@ -178,8 +178,8 @@ button {
 	width: fit-content;
 	margin: 3rem auto;
 	display: grid;
-	grid-template-columns: repeat(2, 150px);
-	grid-template-rows: repeat(3, 50px);
+	grid-template-columns: repeat(2, 40vw);
+	grid-template-rows: repeat(3, 7vh);
 	div {
 		text-align: center;
 	}
