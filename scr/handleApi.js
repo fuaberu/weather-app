@@ -49,7 +49,7 @@ async function getData(lat, lon) {
 //get city name from geolocation
 async function getCity(lat, lon) {
 	const response = await fetch(
-		`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
+		`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
 		{ mode: 'cors' }
 	);
 	const cityName = await response.json();
