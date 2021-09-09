@@ -72,11 +72,15 @@ button {
 			text-transform: uppercase;
 			margin-bottom: 1rem;
 		}
-		#apply {
+		.apply {
 			width: fit-content;
 			padding: 0.3rem 0.8rem;
 			background-color: rgba(111, 218, 62, 0.8);
 		}
+		.flex {
+			justify-content: space-evenly;
+		}
+		.cancel,
 		.close {
 			width: fit-content;
 			padding: 0.3rem 0.8rem;
@@ -84,7 +88,7 @@ button {
 		}
 	}
 
-	div button {
+	button {
 		background-color: transparent;
 		border: none;
 		outline: none;
