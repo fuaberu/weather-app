@@ -75,7 +75,7 @@
 
 							<label for="fahrenheit">Fahrenheit - F°</label><br />
 							<div class="flex">
-								<button type="submit">Apply</button>
+								<button class="apply" onclick="closeForm('temperature-form')" type="submit">Apply</button>
 								<button
 									class="cancel"
 									type="button"
@@ -105,7 +105,7 @@
 							<label for="kts">Nautical miles per hour - kts</label><br />
 
 							<div class="flex">
-								<button type="submit">Apply</button>
+								<button class="apply" onclick="closeForm('wind-form')" type="submit">Apply</button>
 								<button
 									class="cancel"
 									type="button"
@@ -131,6 +131,7 @@
 							<label for="in">Inches - in</label><br />
 
 							<div class="flex">
+								<button class="apply" onclick="closeForm('precipitation-form')" type="submit">Apply</button>
 								<button
 									class="cancel"
 									type="button"
@@ -156,7 +157,7 @@
 							<label for="mi">Miles - mi</label><br />
 
 							<div class="flex">
-								<button onclick="closeForm('visibility-form')" type="submit">
+								<button class="apply" onclick="closeForm('visibility-form')" type="submit">
 									Apply
 								</button>
 								<button
@@ -184,7 +185,7 @@
 							<label for="24h">24h clock</label><br />
 
 							<div class="flex">
-								<button onclick="closeForm('visibility-form')" type="submit">
+								<button class="apply" onclick="closeForm('time-form')" type="submit">
 									Apply
 								</button>
 								<button
@@ -200,7 +201,6 @@
 					<button type="button" class="close" onclick="closeForm('mySettings')">
 						Close
 					</button>
-					<button type="submit" id="apply">Apply</button>
 				</div>
 			</div>
 			<section class="weekday-container">

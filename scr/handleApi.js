@@ -36,7 +36,7 @@ let temperature = 'celsius';
 let wind = 'km/h';
 let precipitation = 'mm';
 let visibilityCheck = 'km';
-let timeCheck = '12h';
+let timeCheck = '24h';
 
 //converter
 function cToF(value) {
@@ -83,8 +83,7 @@ function handleForm(e) {
 	// look at all the contents
 	for (let key of settingsData.keys()) {
 		dataArray.push(settingsData.get(key));
-		console.log(key, settingsData.get(key));
-		console.log(dataArray);
+		// console.log(key, settingsData.get(key));
 	}
 	convertValue(dataArray);
 }
@@ -123,7 +122,6 @@ function convertTime(isoTime) {
 	let hours = parseInt(isoTime.substring(0, 2), 10);
 	let minutes = isoTime.substring(3, 5);
 	let ampm = 'AM';
-	console.log(isoTime);
 
 	if (hours == 12) {
 		ampm = 'PM';
@@ -133,7 +131,9 @@ function convertTime(isoTime) {
 		hours -= 12;
 		ampm = 'PM';
 	}
-
+	if (minutes < 1) {
+		return hours + ' ' + ampm;
+	}
 	return hours + ':' + minutes + ' ' + ampm;
 }
 
@@ -221,7 +221,8 @@ function hourly(data, cityTime) {
 	for (let i = 0; i < hour.length; i++) {
 		let date = cityTime + i * 3600000;
 		let hourDisplay = new Date(date).toISOString().slice(11, -11);
-		hour[i].innerText = hourDisplay;
+		hour[i].innerText =
+			timeCheck === '12h' ? convertTime(hourDisplay) : hourDisplay;
 	}
 
 	for (let i = 0; i < hourTemp.length; i++) {
