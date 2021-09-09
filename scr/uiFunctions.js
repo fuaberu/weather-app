@@ -6,3 +6,4 @@ function openPopup(id) {
 function closeForm(id) {
 	document.getElementById(id).style.display = 'none';
 }
+

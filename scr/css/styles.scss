@@ -62,20 +62,29 @@ button {
 		align-items: center;
 		background-color: white;
 		border-radius: 5px;
+		form {
+			display: flex;
+			flex-direction: column;
+		}
 		h2 {
 			font-size: 2rem;
 			text-align: center;
 			text-transform: uppercase;
 			margin-bottom: 1rem;
 		}
-		.close {
+		#apply {
 			width: fit-content;
 			padding: 0.3rem 0.8rem;
 			background-color: rgba(111, 218, 62, 0.8);
 		}
+		.close {
+			width: fit-content;
+			padding: 0.3rem 0.8rem;
+			background-color: rgba(209, 37, 37, 0.8);
+		}
 	}
 
-	button {
+	div button {
 		background-color: transparent;
 		border: none;
 		outline: none;
@@ -101,7 +110,8 @@ button {
 #temperature-form,
 #wind-form,
 #precipitation-form,
-#visibility-form {
+#visibility-form,
+#time-form {
 	display: none;
 }
 .weather-display-container {
@@ -140,6 +150,8 @@ button {
 		margin: auto;
 		width: fit-content;
 		margin-bottom: 1rem;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 	button {
 		background-color: transparent;

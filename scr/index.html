@@ -53,93 +53,154 @@
 				<div class="settings-container">
 					<h2>Settings</h2>
 
-					<button onclick="openPopup('temperature-form')">Temperature</button>
-					<form action="" id="temperature-form" class="form-container">
-						<input type="radio" id="celsius" name="celsius" value="celsius" />
-						<label for="celsius">Celsius - C°</label><br />
-						<input
-							type="radio"
-							id="fahrenheit"
-							name="fahrenheit"
-							value="fahrenheit"
-						/>
-						<label for="fahrenheit">Fahrenheit - F°</label><br />
-						<div class="flex">
-							<button type="submit">Apply</button>
-							<button
-								class="cancel"
-								type="button"
-								onclick="closeForm('temperature-form')"
-							>
-								Cancel
-							</button>
-						</div>
-					</form>
-					<button onclick="openPopup('wind-form')">Wind</button>
-					<form action="" id="wind-form" class="form-container">
-						<input type="radio" id="m-s" name="m/s" value="m/s" />
-						<label for="m-s">Meters per second - m/s</label><br />
-						<input type="radio" id="km-h" name="km/h" value="km/h" />
-						<label for="km-h">Kilometers per hour - km/h</label><br />
-						<input type="radio" id="ft-s" name="ft/s" value="ft/s" />
-						<label for="ft-s">Feet per second - ft/s</label><br />
-						<input type="radio" id="mi-h" name="mi/h" value="mi/h" />
-						<label for="mi-h">Miles per hour - mi/h</label><br />
-						<input type="radio" id="kts" name="kts" value="kts" />
-						<label for="kts">Nautical miles per hour - kts</label><br />
+					<form id="settingsForm" action="">
+						<button type="button" onclick="openPopup('temperature-form')">
+							Temperature
+						</button>
+						<div id="temperature-form" class="form-container">
+							<input
+								type="radio"
+								id="celsius"
+								name="Temperature"
+								value="celsius"
+								checked="checked"
+							/>
+							<label for="celsius">Celsius - C°</label><br />
+							<input
+								type="radio"
+								id="fahrenheit"
+								name="Temperature"
+								value="fahrenheit"
+							/>
 
-						<div class="flex">
-							<button type="submit">Apply</button>
-							<button
-								class="cancel"
-								type="button"
-								onclick="closeForm('wind-form')"
-							>
-								Cancel
-							</button>
+							<label for="fahrenheit">Fahrenheit - F°</label><br />
+							<div class="flex">
+								<button type="submit">Apply</button>
+								<button
+									class="cancel"
+									type="button"
+									onclick="closeForm('temperature-form')"
+								>
+									Close
+								</button>
+							</div>
 						</div>
-					</form>
-					<button onclick="openPopup('precipitation-form')">
-						Precipitation
-					</button>
-					<form action="" id="precipitation-form" class="form-container">
-						<input type="radio" id="mm" name="mm" value="mm" />
-						<label for="mm">Millimeters - mm</label><br />
-						<input type="radio" id="in" name="in" value="in" />
-						<label for="in">Inches - in</label><br />
+						<button type="button" onclick="openPopup('wind-form')">Wind</button>
+						<div id="wind-form" class="form-container">
+							<input type="radio" id="m-s" name="wind" value="m/s" />
+							<label for="m-s">Meters per second - m/s</label><br />
+							<input
+								type="radio"
+								id="km-h"
+								name="wind"
+								value="km/h"
+								checked="checked"
+							/>
+							<label for="km-h">Kilometers per hour - km/h</label><br />
+							<input type="radio" id="ft-s" name="wind" value="ft/s" />
+							<label for="ft-s">Feet per second - ft/s</label><br />
+							<input type="radio" id="mi-h" name="wind" value="mi/h" />
+							<label for="mi-h">Miles per hour - mi/h</label><br />
+							<input type="radio" id="kts" name="wind" value="kts" />
+							<label for="kts">Nautical miles per hour - kts</label><br />
 
-						<div class="flex">
-							<button type="submit">Apply</button>
-							<button
-								class="cancel"
-								type="button"
-								onclick="closeForm('precipitation-form')"
-							>
-								Cancel
-							</button>
+							<div class="flex">
+								<button type="submit">Apply</button>
+								<button
+									class="cancel"
+									type="button"
+									onclick="closeForm('wind-form')"
+								>
+									Close
+								</button>
+							</div>
 						</div>
-					</form>
-					<button onclick="openPopup('visibility-form')">Visibility</button>
-					<form action="" id="visibility-form" class="form-container">
-						<input type="radio" id="km" name="km" value="km" />
-						<label for="km">Kilometers - km</label><br />
-						<input type="radio" id="mi" name="mi" value="mi" />
-						<label for="mi">Miles - mi</label><br />
+						<button type="button" onclick="openPopup('precipitation-form')">
+							Precipitation
+						</button>
+						<div id="precipitation-form" class="form-container">
+							<input
+								type="radio"
+								id="mm"
+								name="Precipitation"
+								value="mm"
+								checked="checked"
+							/>
+							<label for="mm">Millimeters - mm</label><br />
+							<input type="radio" id="in" name="Precipitation" value="in" />
+							<label for="in">Inches - in</label><br />
 
-						<div class="flex">
-							<button type="submit">Apply</button>
-							<button
-								class="cancel"
-								type="button"
-								onclick="closeForm('visibility-form')"
-							>
-								Cancel
-							</button>
+							<div class="flex">
+								<button
+									class="cancel"
+									type="button"
+									onclick="closeForm('precipitation-form')"
+								>
+									Close
+								</button>
+							</div>
+						</div>
+						<button type="button" onclick="openPopup('visibility-form')">
+							Visibility
+						</button>
+						<div id="visibility-form" class="form-container">
+							<input
+								type="radio"
+								id="km"
+								name="visibility"
+								value="km"
+								checked="checked"
+							/>
+							<label for="km">Kilometers - km</label><br />
+							<input type="radio" id="mi" name="visibility" value="mi" />
+							<label for="mi">Miles - mi</label><br />
+
+							<div class="flex">
+								<button onclick="closeForm('visibility-form')" type="submit">
+									Apply
+								</button>
+								<button
+									class="cancel"
+									type="button"
+									onclick="closeForm('visibility-form')"
+								>
+									Close
+								</button>
+							</div>
+						</div>
+						<button type="button" onclick="openPopup('time-form')">
+							Time
+						</button>
+						<div id="time-form" class="form-container">
+							<input
+								type="radio"
+								id="12h"
+								name="time"
+								value="12h"
+								checked="checked"
+							/>
+							<label for="12h">12h clock</label><br />
+							<input type="radio" id="24h" name="time" value="24h" />
+							<label for="24h">24h clock</label><br />
+
+							<div class="flex">
+								<button onclick="closeForm('visibility-form')" type="submit">
+									Apply
+								</button>
+								<button
+									class="cancel"
+									type="button"
+									onclick="closeForm('time-form')"
+								>
+									Close
+								</button>
+							</div>
 						</div>
 					</form>
 					<button type="button" class="close" onclick="closeForm('mySettings')">
 						Close
 					</button>
+					<button type="submit" id="apply">Apply</button>
 				</div>
 			</div>
 			<section class="weekday-container">
