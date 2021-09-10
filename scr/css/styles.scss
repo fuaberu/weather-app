@@ -269,3 +269,10 @@ button {
 		}
 	}
 }
+@media (orientation: landscape) {
+	.general-information-container {
+		grid-template-columns: repeat(3, 30vw);
+		grid-template-rows: repeat(2, 20vh);
+		margin: 2rem auto;
+	}
+}
