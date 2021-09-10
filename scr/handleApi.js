@@ -20,7 +20,6 @@ const hourlyIcon = document.querySelectorAll('.hourly-icon');
 
 // general information
 const probabPrecipitation = document.querySelector('#probab-precipitation');
-const volumePrecipitation = document.querySelector('#precipitation-volume');
 const windDirection = document.querySelector('#wind');
 const windValue = document.querySelector('#wind-value');
 const humidity = document.querySelector('#humidity');
@@ -37,7 +36,6 @@ const main = document.querySelector('.main');
 // global variables
 let temperature = 'celsius';
 let wind = 'km/h';
-let precipitation = 'mm';
 let visibilityCheck = 'km';
 let timeCheck = '24h';
 
@@ -114,9 +112,8 @@ function handleCityNameForm(e) {
 function convertValue(value) {
 	temperature = value[0];
 	wind = value[1];
-	precipitation = value[2];
-	visibilityCheck = value[3];
-	timeCheck = value[4];
+	visibilityCheck = value[2];
+	timeCheck = value[3];
 }
 
 // form city name convert to geolocation

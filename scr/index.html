@@ -117,32 +117,6 @@
 								</button>
 							</div>
 						</div>
-						<button type="button" onclick="openPopup('precipitation-form')">
-							Precipitation
-						</button>
-						<div id="precipitation-form" class="form-container">
-							<input
-								type="radio"
-								id="mm"
-								name="Precipitation"
-								value="mm"
-								checked="checked"
-							/>
-							<label for="mm">Millimeters - mm</label><br />
-							<input type="radio" id="in" name="Precipitation" value="in" />
-							<label for="in">Inches - in</label><br />
-
-							<div class="flex">
-								<button class="apply" onclick="closeForm('precipitation-form')" type="submit">Apply</button>
-								<button
-									class="cancel"
-									type="button"
-									onclick="closeForm('precipitation-form')"
-								>
-									Close
-								</button>
-							</div>
-						</div>
 						<button type="button" onclick="openPopup('visibility-form')">
 							Visibility
 						</button>
@@ -180,10 +154,10 @@
 								id="12h"
 								name="time"
 								value="12h"
-								checked="checked"
+								
 							/>
 							<label for="12h">12h clock</label><br />
-							<input type="radio" id="24h" name="time" value="24h" />
+							<input type="radio" id="24h" name="time" value="24h" checked="checked"/>
 							<label for="24h">24h clock</label><br />
 
 							<div class="flex">
