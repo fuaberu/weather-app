@@ -5,13 +5,14 @@
 	font-size: 12px;
 }
 body,
-html,
-.main {
+html {
+	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 }
 .main {
-
+	min-height: 100%;
 	background-repeat: no-repeat;
+	color: white;
 }
 i {
 	font-size: 1.5rem;
@@ -133,6 +134,7 @@ button {
 	input {
 		margin-left: 1rem;
 		width: 50vw;
+		max-width: 400px;
 	}
 	#city-location {
 		background: none;
@@ -163,7 +165,8 @@ button {
 		height: fit-content;
 	}
 	.material-icons {
-		color: hotpink;
+		color: white;
+		cursor: pointer;
 	}
 	.current-icon {
 		font-size: 5rem;
@@ -187,6 +190,9 @@ button {
 	.hourly-weather:not(:last-child) {
 		margin-right: 1rem;
 	}
+	.hourly-weather p {
+		margin-top: 0.3rem;
+	}
 }
 .general-information-container {
 	width: fit-content;
@@ -196,5 +202,70 @@ button {
 	grid-template-rows: repeat(3, 7vh);
 	div {
 		text-align: center;
+		p {
+			font-size: 1rem;
+		}
+	}
+}
+
+@media only screen and (min-width: 500px) {
+	html {
+		font-size: 14px;
+	}
+	.weather-hourly-container .hourly-weather:not(:last-child) {
+		margin-right: 2rem;
+	}
+}
+@media only screen and (min-width: 700px) {
+	html {
+		font-size: 18px;
+	}
+	.weather-hourly-container .hourly-weather:not(:last-child) {
+		margin-right: 3rem;
+	}
+}
+@media only screen and (min-width: 900px) {
+	html {
+		font-size: 20px;
+	}
+	.new-city-time,
+	.city-name-container {
+		width: 95vw;
+		margin: auto;
+	}
+	// scrollbars
+	::-webkit-scrollbar {
+		height: 10px;
+		width: 10px;
+		background: gray;
+	}
+	::-webkit-scrollbar-thumb:horizontal {
+		background: #000;
+		border-radius: 10px;
+	}
+	::-webkit-scrollbar-thumb:vertical {
+		background: #000;
+		border-radius: 10px;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	html {
+		font-size: 22px;
+	}
+	.general-information-container {
+		grid-template-columns: repeat(3, 30vw);
+		grid-template-rows: repeat(2, 10vh);
+		margin: 2rem auto;
+	}
+	.weather-hourly-container .hourly-weather:not(:last-child) {
+		margin-right: 4rem;
+	}
+}
+@media only screen and (min-height: 700px) {
+	.weather-display-container {
+		margin-bottom: 4rem;
+		.current-tempreture-container {
+			margin: 1rem;
+		}
 	}
 }

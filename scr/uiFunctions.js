@@ -8,10 +8,11 @@ function closeForm(id) {
 }
 
 function ChangeBackground(sunrise, sunset, weather, time, background) {
+	console.log(sunrise, sunset, weather, time, background);
 	if (
 		// day sky clear colors
-		time > sunrise + 2 * 3600 &&
-		time < sunset - 2 * 3600 &&
+		time > sunrise + 1 * 3600 &&
+		time < sunset - 1 * 3600 &&
 		weather === 'clear'
 	) {
 		background.style.background =
@@ -19,8 +20,8 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	}
 	if (
 		// day sky rain colors
-		time > sunrise + 2 * 3600 &&
-		time < sunset - 2 * 3600 &&
+		time > sunrise + 1 * 3600 &&
+		time < sunset - 1 * 3600 &&
 		weather !== 'clear'
 	) {
 		background.style.background =
@@ -29,7 +30,7 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	if (
 		// sunrise clear colors
 		time >= sunrise &&
-		time <= sunrise + 2 * 3600 &&
+		time <= sunrise + 1 * 3600 &&
 		weather === 'clear'
 	) {
 		background.style.background =
@@ -38,7 +39,7 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	if (
 		// sunrise rain colors
 		time >= sunrise &&
-		time <= sunrise + 2 * 3600 &&
+		time <= sunrise + 1 * 3600 &&
 		weather !== 'clear'
 	) {
 		background.style.background =
@@ -47,7 +48,7 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	if (
 		// sunset clear colors
 		time <= sunset &&
-		time >= sunset - 2 * 3600 &&
+		time >= sunset - 1 * 3600 &&
 		weather === 'clear'
 	) {
 		background.style.background =
@@ -56,7 +57,7 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	if (
 		// sunset rain colors
 		time <= sunset &&
-		time >= sunset - 2 * 3600 &&
+		time >= sunset - 1 * 3600 &&
 		weather !== 'clear'
 	) {
 		background.style.background =
@@ -65,7 +66,6 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	if (
 		// night clear colors
 		time > sunset &&
-		time < sunrise &&
 		weather === 'clear'
 	) {
 		background.style.background =
@@ -74,7 +74,6 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	if (
 		// night rain colors
 		time > sunset &&
-		time < sunrise &&
 		weather !== 'clear'
 	) {
 		background.style.background =
