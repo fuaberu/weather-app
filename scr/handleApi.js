@@ -75,9 +75,14 @@ getData(51.5098, -0.118);
 document.addEventListener('DOMContentLoaded', () => {
 	document
 		.getElementById('settingsForm')
-		.addEventListener('submit', handleForm);
+		.addEventListener('submit', handleSettingsForm);
+	document
+		.getElementById('city-location-input')
+		.addEventListener('submit', handleCityNameForm);
 });
-function handleForm(e) {
+
+// settings input
+function handleSettingsForm(e) {
 	e.preventDefault(); //stop the page reloading
 	//console.dir(ev.target);
 	let myForm = e.target;
@@ -91,13 +96,39 @@ function handleForm(e) {
 	convertValue(dataArray);
 }
 
-// form data change
+// city name from city input form
+function handleCityNameForm(e) {
+	e.preventDefault(); //stop the page reloading
+	//console.dir(ev.target);
+	let myForm = e.target;
+	let cityData = new FormData(myForm);
+	let dataName = '';
+	// look at all the contents
+	for (let key of cityData.keys()) {
+		dataName = cityData.get(key);
+	}
+	getCityCoordinates(dataName);
+}
+
+// form settings data change
 function convertValue(value) {
 	temperature = value[0];
 	wind = value[1];
 	precipitation = value[2];
 	visibilityCheck = value[3];
 	timeCheck = value[4];
+}
+
+// form city name convert to geolocation
+async function getCityCoordinates(city) {
+	const response = await fetch(
+		`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
+		{ mode: 'cors' }
+	);
+	const cityCoordinates = await response.json();
+	console.log(cityCoordinates);
+	//display the city name
+	getData(cityCoordinates[0].lat, cityCoordinates[0].lon);
 }
 
 // icons function
@@ -140,7 +171,7 @@ function convertTime(isoTime) {
 	return hours + ':' + minutes + ' ' + ampm;
 }
 
-// display current
+// display current weather
 function displayCurrent(data) {
 	//display icon
 	currentIcon.classList.add(
@@ -388,7 +419,16 @@ function displayWeather(data) {
 		userLocation();
 		stopInterval();
 	});
+	document.getElementById('city-search-btn').addEventListener('click', () => {
+		stopInterval();
+	});
 
 	// background color
-	ChangeBackground(data.current.sunrise, data.current.sunset,data.current.weather[0].main, data.current.dt, main);
+	ChangeBackground(
+		data.current.sunrise,
+		data.current.sunset,
+		data.current.weather[0].main,
+		data.current.dt,
+		main
+	);
 }
