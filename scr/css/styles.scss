@@ -5,14 +5,12 @@
 	font-size: 12px;
 }
 body,
-html {
+html,
+.main {
 	height: 100%;
-	background: linear-gradient(
-		0deg,
-		rgba(250, 194, 110, 1) 13%,
-		rgba(208, 67, 67, 1) 95%,
-		rgba(208, 47, 47, 1) 100%
-	);
+}
+.main {
+
 	background-repeat: no-repeat;
 }
 i {

@@ -28,6 +28,9 @@ const uv = document.querySelector('#uv');
 const visibility = document.querySelector('#visibility');
 const feelsLike = document.querySelector('.feels-like');
 
+// main
+const main = document.querySelector('.main');
+
 // form values
 
 // variables
@@ -385,4 +388,7 @@ function displayWeather(data) {
 		userLocation();
 		stopInterval();
 	});
+
+	// background color
+	ChangeBackground(data.current.sunrise, data.current.sunset,data.current.weather[0].main, data.current.dt, main);
 }
