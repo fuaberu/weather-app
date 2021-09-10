@@ -215,6 +215,11 @@ button {
 	.weather-hourly-container .hourly-weather:not(:last-child) {
 		margin-right: 2rem;
 	}
+	.general-information-container {
+		grid-template-columns: repeat(3, 30vw);
+		grid-template-rows: repeat(2, 100px);
+		margin: 2rem auto;
+	}
 }
 @media only screen and (min-width: 700px) {
 	html {
@@ -252,11 +257,6 @@ button {
 	html {
 		font-size: 22px;
 	}
-	.general-information-container {
-		grid-template-columns: repeat(3, 30vw);
-		grid-template-rows: repeat(2, 10vh);
-		margin: 2rem auto;
-	}
 	.weather-hourly-container .hourly-weather:not(:last-child) {
 		margin-right: 4rem;
 	}
@@ -267,12 +267,5 @@ button {
 		.current-tempreture-container {
 			margin: 1rem;
 		}
-	}
-}
-@media (orientation: landscape) {
-	.general-information-container {
-		grid-template-columns: repeat(3, 30vw);
-		grid-template-rows: repeat(2, 20vh);
-		margin: 2rem auto;
 	}
 }
