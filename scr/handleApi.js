@@ -185,8 +185,8 @@ function displayCurrent(data) {
 	//diaplay current temperature
 	currentTempreture.innerText =
 		temperature === 'celsius'
-			? `${Math.round(data.current.temp)}`
-			: `${Math.round(cToF(data.current.temp))}`;
+			? ` ${Math.round(data.current.temp)}`
+			: ` ${Math.round(cToF(data.current.temp))}`;
 
 	//display current min and max temperature
 	maxMin.innerText = `${data.current.weather[0].main} ${Math.round(

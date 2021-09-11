@@ -31,9 +31,7 @@ h2 {
 h3 {
 	font-size: 1.4rem;
 }
-h4 {
-	font-size: 1.2rem;
-}
+h4,
 h5 {
 	font-size: 1rem;
 }
@@ -219,7 +217,6 @@ button {
 .scroll {
 	animation: nudge 7s infinite linear;
 	backface-visibility: hidden;
-	
 }
 @keyframes nudge {
 	100% {
@@ -239,8 +236,15 @@ button {
 	.hourly-weather:not(:last-child) {
 		margin-right: 1rem;
 	}
-	.hourly-weather p {
-		margin-top: 0.3rem;
+	.hourly-weather {
+		width: fit-content;
+		text-align: center;
+		p {
+			margin-top: 0.3rem;
+		}
+		h4 {
+			white-space: nowrap;
+		}
 	}
 }
 .general-information-container {
@@ -291,33 +295,35 @@ button {
 		margin: 3rem auto;
 	}
 }
-@media only screen and (min-width: 1200px) {
-	html {
-		font-size: 22px;
-	}
+@media only screen and (min-width: 1050px) {
 	// scrollbars
 	::-webkit-scrollbar {
 		height: 10px;
 		width: 10px;
 		background: gray;
 	}
+	::-webkit-scrollbar-thumb:vertical {
+		background: #000;
+		border-radius: 10px;
+	}
 	::-webkit-scrollbar-thumb:horizontal {
 		background: #000;
 		border-radius: 10px;
 	}
-	::-webkit-scrollbar-thumb:vertical {
-		background: #000;
-		border-radius: 10px;
+}
+@media only screen and (min-width: 1200px) {
+	html {
+		font-size: 22px;
+	}
+	.weather-display-container {
+		margin-bottom: 3rem;
 	}
 	.weather-hourly-container .hourly-weather:not(:last-child) {
 		margin-right: 4rem;
 	}
 }
 @media only screen and (min-height: 700px) {
-	.weather-display-container {
-		margin-bottom: 4rem;
-		.current-tempreture-container {
-			margin: 1rem;
-		}
+	.current-tempreture-container {
+		margin: 1rem;
 	}
 }

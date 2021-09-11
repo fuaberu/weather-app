@@ -10,7 +10,7 @@ function closeForm(id) {
 // make the scroll effect
 const discriptions = document.querySelectorAll('.today-discription');
 const discriptionWidth =
-	document.querySelector('.weekday-container').offsetWidth / 6.5;
+	document.querySelector('.weekday-container').offsetWidth / 6;
 function scrollDiscription() {
 	for (let i = 0; i < discriptions.length; i++) {
 		if (discriptions[i].innerText.split('').length * 6 >= discriptionWidth) {
