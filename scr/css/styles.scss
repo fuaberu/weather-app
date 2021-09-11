@@ -14,6 +14,9 @@ html {
 	background-repeat: no-repeat;
 	color: white;
 }
+button {
+	cursor: pointer;
+}
 i {
 	font-size: 1.5rem;
 	color: white;
@@ -30,6 +33,9 @@ h3 {
 }
 h4 {
 	font-size: 1.2rem;
+}
+h5 {
+	font-size: 1rem;
 }
 .flex {
 	display: flex;
@@ -132,9 +138,30 @@ button {
 		align-items: center;
 	}
 	input {
-		margin-left: 1rem;
+		margin: auto 1rem;
 		width: 50vw;
 		max-width: 400px;
+		font-size: 1rem;
+		outline: none;
+		padding: 0.3rem;
+	}
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover,
+	input:-webkit-autofill:focus,
+	input:-webkit-autofill:active {
+		-webkit-text-fill-color: white;
+		transition: background-color 5000s ease-in-out 0s;
+	}
+	input::placeholder {
+		color: white;
+		opacity: 1; /* Firefox */
+	}
+	i {
+		height: 100%;
+	}
+	form {
+		display: flex;
+		align-items: center;
 	}
 	#city-location {
 		background: none;
@@ -163,9 +190,11 @@ button {
 		outline: none;
 		width: fit-content;
 		height: fit-content;
+		align-items: center;
 	}
 	.material-icons {
 		color: white;
+		font-size: 2rem;
 		cursor: pointer;
 	}
 	.current-icon {
@@ -178,6 +207,26 @@ button {
 	padding: 1rem;
 	.weekday {
 		text-align: center;
+		overflow-x: hidden;
+		// auto-scroll
+		.today-discription {
+			width: 100%;
+			white-space: nowrap;
+			font-size: 0.8rem;
+		}
+	}
+}
+.scroll {
+	animation: nudge 7s infinite linear;
+	backface-visibility: hidden;
+	
+}
+@keyframes nudge {
+	100% {
+		transform: translate(-120%, 0) perspective(1px);
+	}
+	0% {
+		transform: translate(120%, 0) perspective(1px);
 	}
 }
 .weather-hourly-container {
@@ -196,7 +245,7 @@ button {
 }
 .general-information-container {
 	width: fit-content;
-	margin: 3rem auto;
+	margin: 2rem auto;
 	display: grid;
 	grid-template-columns: repeat(2, 40vw);
 	grid-template-rows: repeat(3, 7vh);
@@ -238,6 +287,14 @@ button {
 		width: 95vw;
 		margin: auto;
 	}
+	.general-information-container {
+		margin: 3rem auto;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	html {
+		font-size: 22px;
+	}
 	// scrollbars
 	::-webkit-scrollbar {
 		height: 10px;
@@ -251,11 +308,6 @@ button {
 	::-webkit-scrollbar-thumb:vertical {
 		background: #000;
 		border-radius: 10px;
-	}
-}
-@media only screen and (min-width: 1200px) {
-	html {
-		font-size: 22px;
 	}
 	.weather-hourly-container .hourly-weather:not(:last-child) {
 		margin-right: 4rem;

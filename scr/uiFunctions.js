@@ -7,6 +7,26 @@ function closeForm(id) {
 	document.getElementById(id).style.display = 'none';
 }
 
+// make the scroll effect
+const discriptions = document.querySelectorAll('.today-discription');
+const discriptionWidth =
+	document.querySelector('.weekday-container').offsetWidth / 6.5;
+function scrollDiscription() {
+	for (let i = 0; i < discriptions.length; i++) {
+		if (discriptions[i].innerText.split('').length * 6 >= discriptionWidth) {
+			discriptions[i].classList.add('scroll');
+		}
+		console.log(discriptions[i].innerText.split('').length * 5);
+	}
+	console.log(discriptionWidth);
+}
+
+function takeScroll() {
+	for (let i = 0; i < discriptions.length; i++) {
+		discriptions[i].classList.remove('scroll');
+	}
+}
+
 function ChangeBackground(sunrise, sunset, weather, time, background) {
 	console.log(sunrise, sunset, weather, time, background);
 	if (

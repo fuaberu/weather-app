@@ -51,6 +51,7 @@ async function getData(lat, lon) {
 		{ mode: 'cors' }
 	);
 	const data = await response.json();
+	takeScroll();
 	displayWeather(data);
 }
 
@@ -125,6 +126,7 @@ async function getCityCoordinates(city) {
 	const cityCoordinates = await response.json();
 	console.log(cityCoordinates);
 	//display the city name
+	takeScroll();
 	getData(cityCoordinates[0].lat, cityCoordinates[0].lon);
 }
 
@@ -219,6 +221,9 @@ function dayWeek(data) {
 	for (let i = 0; i < todayDiscription.length; i++) {
 		todayDiscription[i].innerText = data.daily[i].weather[0].description;
 	}
+
+	// scroll effect
+	scrollDiscription();
 
 	//day max min
 	for (let i = 0; i < todayMaxMin.length; i++) {
