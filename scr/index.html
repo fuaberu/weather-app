@@ -56,16 +56,11 @@
 			</section>
 			<div class="settings-popup" id="mySettings">
 				<div class="settings-container">
-					<div class="flex">
-						<h2>Settings</h2>
-						<button
-							type="button"
-							class="close"
-							onclick="closeForm('mySettings')"
-						>
-							Close
-						</button>
-					</div>
+					<button type="button" class="close" onclick="closeForm('mySettings')">
+						<i class="small material-icons">close</i>
+					</button>
+					<h2>Settings</h2>
+
 					<form id="settingsForm" action="">
 						<button type="button" onclick="openPopup('temperature-form')">
 							Temperature
@@ -78,7 +73,7 @@
 								value="celsius"
 								checked="checked"
 							/>
-							<label for="celsius">Celsius - C°</label><br />
+							<label class="form-label" for="celsius">Celsius - C°</label><br />
 							<input
 								type="radio"
 								id="fahrenheit"
@@ -86,7 +81,8 @@
 								value="fahrenheit"
 							/>
 
-							<label for="fahrenheit">Fahrenheit - F°</label><br />
+							<label class="form-label" for="fahrenheit">Fahrenheit - F°</label
+							><br />
 							<div class="flex">
 								<button
 									class="apply"
@@ -107,7 +103,8 @@
 						<button type="button" onclick="openPopup('wind-form')">Wind</button>
 						<div id="wind-form" class="form-container">
 							<input type="radio" id="m-s" name="wind" value="m/s" />
-							<label for="m-s">Meters per second - m/s</label><br />
+							<label class="form-label" for="m-s">Meters per second - m/s</label
+							><br />
 							<input
 								type="radio"
 								id="km-h"
@@ -115,13 +112,19 @@
 								value="km/h"
 								checked="checked"
 							/>
-							<label for="km-h">Kilometers per hour - km/h</label><br />
+							<label class="form-label" for="km-h"
+								>Kilometers per hour - km/h</label
+							><br />
 							<input type="radio" id="ft-s" name="wind" value="ft/s" />
-							<label for="ft-s">Feet per second - ft/s</label><br />
+							<label class="form-label" for="ft-s">Feet per second - ft/s</label
+							><br />
 							<input type="radio" id="mi-h" name="wind" value="mi/h" />
-							<label for="mi-h">Miles per hour - mi/h</label><br />
+							<label class="form-label" for="mi-h">Miles per hour - mi/h</label
+							><br />
 							<input type="radio" id="kts" name="wind" value="kts" />
-							<label for="kts">Nautical miles per hour - kts</label><br />
+							<label class="form-label" for="kts"
+								>Nautical miles per hour - kts</label
+							><br />
 
 							<div class="flex">
 								<button
@@ -151,9 +154,9 @@
 								value="km"
 								checked="checked"
 							/>
-							<label for="km">Kilometers - km</label><br />
+							<label class="form-label" for="km">Kilometers - km</label><br />
 							<input type="radio" id="mi" name="visibility" value="mi" />
-							<label for="mi">Miles - mi</label><br />
+							<label class="form-label" for="mi">Miles - mi</label><br />
 
 							<div class="flex">
 								<button
@@ -174,16 +177,17 @@
 						</div>
 						<button type="button" onclick="openPopup('time-form')">Time</button>
 						<div id="time-form" class="form-container">
-							<input type="radio" id="12h" name="time" value="12h" />
-							<label for="12h">12h clock</label><br />
+							<input type="radio" id="pm-am" name="time" value="12h" />
+							<label class="form-label" for="pm-am">12h clock</label><br />
 							<input
 								type="radio"
-								id="24h"
+								id="military-time"
 								name="time"
 								value="24h"
-								checked="checked"
+								checked
 							/>
-							<label for="24h">24h clock</label><br />
+							<label class="form-label" for="military-time">24h clock</label
+							><br />
 
 							<div class="flex">
 								<button

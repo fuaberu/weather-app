@@ -16,6 +16,8 @@ html {
 }
 button {
 	cursor: pointer;
+	font-size: 1.2rem;
+	user-select: none;
 }
 i {
 	font-size: 1.5rem;
@@ -38,9 +40,6 @@ h5 {
 .flex {
 	display: flex;
 	flex-direction: row;
-}
-button {
-	font-size: 1.6rem;
 }
 .settings-popup {
 	position: absolute;
@@ -71,25 +70,42 @@ button {
 			display: flex;
 			flex-direction: column;
 		}
+		.material-icons {
+			position: absolute;
+			right: 15px;
+			top: 15px;
+			margin: 0;
+			font-size: 2rem;
+			color: black;
+		}
 		h2 {
 			font-size: 2rem;
 			text-align: center;
 			text-transform: uppercase;
 			margin-bottom: 1rem;
 		}
+
 		.apply {
-			width: fit-content;
 			padding: 0.3rem 0.8rem;
-			background-color: rgba(111, 218, 62, 0.8);
+			border-radius: 5px;
+			transition: 0.3s;
+			font-weight: 700;
+			color: white;
+			background-color: rgba(80, 235, 80, 0.8);
+			&:hover {
+				background-color: rgba(80, 235, 80, 1);
+			}
 		}
-		.flex {
-			justify-content: space-evenly;
-		}
-		.cancel,
-		.close {
-			width: fit-content;
+		.cancel {
 			padding: 0.3rem 0.8rem;
-			background-color: rgba(209, 37, 37, 0.8);
+			border-radius: 5px;
+			transition: 0.3s;
+			font-weight: 700;
+			color: white;
+			background-color: rgba(235, 80, 80, 0.8);
+			&:hover {
+				background-color: rgb(235, 80, 80);
+			}
 		}
 	}
 
@@ -102,9 +118,9 @@ button {
 }
 .form-container {
 	position: absolute;
-	width: 300px;
+	width: 350px;
 	height: fit-content;
-	padding: 1.5rem;
+	padding: 1.5rem 0.5rem;
 	border-radius: 5px;
 	line-height: 2.5rem;
 	top: 0;
@@ -113,7 +129,49 @@ button {
 	right: 0;
 	margin: auto;
 	background-color: white;
-	box-shadow: 0 0 5px 2px rgb(182, 182, 182);
+	box-shadow: 0 0 10px 3px rgba(72, 72, 72, 0.2);
+	.form-label {
+		display: inline-block;
+		font-size: 1rem;
+		padding: 0.5rem;
+		width: 100%;
+		cursor: pointer;
+		color: black;
+		border-radius: 5px;
+		transition: 0.3s;
+		user-select: none;
+		&:hover {
+			background: rgb(189, 189, 189);
+			box-shadow: 0 0 10px 5px rgba(143, 143, 143, 0.2);
+		}
+		&:active {
+			transform: translateY(2px);
+			box-shadow: 0 0 10px 5px rgba(143, 143, 143, 0.2);
+		}
+	}
+	div {
+		justify-content: space-evenly;
+	}
+	input {
+		display: none;
+	}
+	#celsius:checked + .form-label,
+	#fahrenheit:checked + .form-label,
+	#m-s:checked + .form-label,
+	#km-h:checked + .form-label,
+	#ft-s:checked + .form-label,
+	#mi-h:checked + .form-label,
+	#kts:checked + .form-label,
+	#km:checked + .form-label,
+	#mi:checked + .form-label,
+	#pm-am:checked + .form-label,
+	#military-time:checked + .form-label {
+		background: rgb(113, 144, 245);
+		color: white;
+		&:hover {
+			background: rgb(119, 114, 199);
+		}
+	}
 }
 // set popups as display none
 #temperature-form,
@@ -279,7 +337,7 @@ button {
 	}
 	.general-information-container {
 		grid-template-columns: repeat(3, 30vw);
-		grid-template-rows: repeat(2, 100px);
+		grid-template-rows: repeat(2, 90px);
 		margin: 2rem auto;
 	}
 }
@@ -307,16 +365,15 @@ button {
 @media only screen and (min-width: 1050px) {
 	// scrollbars
 	::-webkit-scrollbar {
-		height: 10px;
+		height: 8px;
 		width: 10px;
-		background: gray;
 	}
 	::-webkit-scrollbar-thumb:vertical {
-		background: #000;
+		background: rgb(75, 75, 75);
 		border-radius: 10px;
 	}
 	::-webkit-scrollbar-thumb:horizontal {
-		background: #000;
+		background: rgb(75, 75, 75);
 		border-radius: 10px;
 	}
 }
