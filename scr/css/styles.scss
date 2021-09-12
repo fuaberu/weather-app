@@ -46,6 +46,7 @@ button {
 	position: absolute;
 	width: auto;
 	height: auto;
+	z-index: 99;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -53,6 +54,7 @@ button {
 	margin: auto;
 	background-color: rgba(0, 0, 0, 0.5);
 	display: none;
+	color: black;
 	.settings-container {
 		position: relative;
 		width: 350px;
@@ -126,14 +128,18 @@ button {
 	h1 {
 		font-size: 2rem;
 	}
-	h2 {
-		font-size: 5rem;
+	h2,
+	.current-icon {
+		font-size: 4rem;
 	}
 	.new-city-time,
 	.city-name-container {
 		justify-content: space-between;
 		padding: 1rem 1rem 0 1rem;
 		align-items: center;
+	}
+	.display-time {
+		white-space: nowrap;
 	}
 	input {
 		margin: auto 1rem;
@@ -195,9 +201,6 @@ button {
 		font-size: 2rem;
 		cursor: pointer;
 	}
-	.current-icon {
-		font-size: 5rem;
-	}
 }
 .weekday-container {
 	display: grid;
@@ -210,6 +213,9 @@ button {
 		.today-discription {
 			width: 100%;
 			white-space: nowrap;
+			font-size: 0.8rem;
+		}
+		.today-max-min {
 			font-size: 0.8rem;
 		}
 	}
@@ -234,7 +240,7 @@ button {
 	border-bottom: 1px solid black;
 	border-top: 1px solid black;
 	.hourly-weather:not(:last-child) {
-		margin-right: 1rem;
+		margin-right: 2rem;
 	}
 	.hourly-weather {
 		width: fit-content;
@@ -259,6 +265,9 @@ button {
 			font-size: 1rem;
 		}
 	}
+	h3 {
+		font-size: 1rem;
+	}
 }
 
 @media only screen and (min-width: 500px) {
@@ -266,7 +275,7 @@ button {
 		font-size: 14px;
 	}
 	.weather-hourly-container .hourly-weather:not(:last-child) {
-		margin-right: 2rem;
+		margin-right: 3rem;
 	}
 	.general-information-container {
 		grid-template-columns: repeat(3, 30vw);
@@ -279,7 +288,7 @@ button {
 		font-size: 18px;
 	}
 	.weather-hourly-container .hourly-weather:not(:last-child) {
-		margin-right: 3rem;
+		margin-right: 4rem;
 	}
 }
 @media only screen and (min-width: 900px) {
@@ -319,11 +328,27 @@ button {
 		margin-bottom: 3rem;
 	}
 	.weather-hourly-container .hourly-weather:not(:last-child) {
-		margin-right: 4rem;
+		margin-right: 5rem;
 	}
 }
 @media only screen and (min-height: 700px) {
 	.current-tempreture-container {
 		margin: 1rem;
+	}
+}
+// for ipad pro
+@media only screen and (aspect-ratio: 1024/1366) {
+	.general-information-container {
+		margin: 4rem;
+		grid-template-rows: 200px;
+	}
+}
+// for long phones
+@media only screen and (max-aspect-ratio: 410/800) {
+	.weather-display-container {
+		margin-bottom: 3rem;
+	}
+	.general-information-container {
+		margin: 4rem;
 	}
 }

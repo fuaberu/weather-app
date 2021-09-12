@@ -16,9 +16,7 @@ function scrollDiscription() {
 		if (discriptions[i].innerText.split('').length * 6 >= discriptionWidth) {
 			discriptions[i].classList.add('scroll');
 		}
-		console.log(discriptions[i].innerText.split('').length * 5);
 	}
-	console.log(discriptionWidth);
 }
 
 function takeScroll() {
@@ -85,16 +83,16 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	}
 	if (
 		// night clear colors
-		time > sunset &&
-		weather === 'clear'
+		(time > sunset &&
+		weather === 'clear') || (time < sunrise && weather === 'clear')
 	) {
 		background.style.background =
 			'linear-gradient(0deg, rgba(24,80,136,1) 20%, rgba(8,30,99,1) 55%, rgba(0,10,38,1) 91%)';
 	}
 	if (
 		// night rain colors
-		time > sunset &&
-		weather !== 'clear'
+		(time > sunset && weather !== 'clear') ||
+		(time < sunrise && weather !== 'clear')
 	) {
 		background.style.background =
 			'linear-gradient(0deg, rgba(31,45,97,1) 20%, rgba(18,25,46,1) 55%, rgba(0,0,0,1) 91%)';

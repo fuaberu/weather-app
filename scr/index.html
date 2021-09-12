@@ -12,7 +12,10 @@
 			href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			rel="stylesheet"
 		/>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap"
+			rel="stylesheet"
+		/>
 		<base href="https://fuaberu.github.io/weather-app/" />
 		<title>Weather App</title>
 	</head>
@@ -53,8 +56,16 @@
 			</section>
 			<div class="settings-popup" id="mySettings">
 				<div class="settings-container">
-					<h2>Settings</h2>
-
+					<div class="flex">
+						<h2>Settings</h2>
+						<button
+							type="button"
+							class="close"
+							onclick="closeForm('mySettings')"
+						>
+							Close
+						</button>
+					</div>
 					<form id="settingsForm" action="">
 						<button type="button" onclick="openPopup('temperature-form')">
 							Temperature
@@ -77,7 +88,13 @@
 
 							<label for="fahrenheit">Fahrenheit - F°</label><br />
 							<div class="flex">
-								<button class="apply" onclick="closeForm('temperature-form')" type="submit">Apply</button>
+								<button
+									class="apply"
+									onclick="closeForm('temperature-form')"
+									type="submit"
+								>
+									Apply
+								</button>
 								<button
 									class="cancel"
 									type="button"
@@ -107,7 +124,13 @@
 							<label for="kts">Nautical miles per hour - kts</label><br />
 
 							<div class="flex">
-								<button class="apply" onclick="closeForm('wind-form')" type="submit">Apply</button>
+								<button
+									class="apply"
+									onclick="closeForm('wind-form')"
+									type="submit"
+								>
+									Apply
+								</button>
 								<button
 									class="cancel"
 									type="button"
@@ -133,7 +156,11 @@
 							<label for="mi">Miles - mi</label><br />
 
 							<div class="flex">
-								<button class="apply" onclick="closeForm('visibility-form')" type="submit">
+								<button
+									class="apply"
+									onclick="closeForm('visibility-form')"
+									type="submit"
+								>
 									Apply
 								</button>
 								<button
@@ -145,23 +172,25 @@
 								</button>
 							</div>
 						</div>
-						<button type="button" onclick="openPopup('time-form')">
-							Time
-						</button>
+						<button type="button" onclick="openPopup('time-form')">Time</button>
 						<div id="time-form" class="form-container">
+							<input type="radio" id="12h" name="time" value="12h" />
+							<label for="12h">12h clock</label><br />
 							<input
 								type="radio"
-								id="12h"
+								id="24h"
 								name="time"
-								value="12h"
-								
+								value="24h"
+								checked="checked"
 							/>
-							<label for="12h">12h clock</label><br />
-							<input type="radio" id="24h" name="time" value="24h" checked="checked"/>
 							<label for="24h">24h clock</label><br />
 
 							<div class="flex">
-								<button class="apply" onclick="closeForm('time-form')" type="submit">
+								<button
+									class="apply"
+									onclick="closeForm('time-form')"
+									type="submit"
+								>
 									Apply
 								</button>
 								<button
@@ -174,9 +203,6 @@
 							</div>
 						</div>
 					</form>
-					<button type="button" class="close" onclick="closeForm('mySettings')">
-						Close
-					</button>
 				</div>
 			</div>
 			<section class="weekday-container">
