@@ -30,6 +30,9 @@ const feelsLike = document.querySelector('.feels-like');
 // main
 const main = document.querySelector('.main');
 
+//loader
+const loader = document.getElementById('loader');
+
 // form values
 
 // variables
@@ -46,24 +49,41 @@ function cToF(value) {
 //-------API fetch------//
 //get the weather data
 async function getData(lat, lon) {
-	const response = await fetch(
-		`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
-		{ mode: 'cors' }
-	);
-	const data = await response.json();
-	takeScroll();
-	displayWeather(data);
+	loader.style.opacity = 1;
+	loader.style.display = 'block';
+	try {
+		const response = await fetch(
+			`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
+			{ mode: 'cors' }
+		);
+		const data = await response.json();
+		takeScroll();
+		displayWeather(data);
+		setTimeout(() => {
+			loader.style.opacity = 0;
+		}, 1000);
+	} catch (error) {
+		alert(
+			'Sorry, there was an error on the weather data. Please try again later.'
+		);
+	}
 }
 
 //get city name from geolocation
 async function getCity(lat, lon) {
-	const response = await fetch(
-		`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
-		{ mode: 'cors' }
-	);
-	const cityName = await response.json();
-	//display the city name
-	displayCity.innerText = `${cityName[0].name}, ${cityName[0].country}`;
+	try {
+		const response = await fetch(
+			`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
+			{ mode: 'cors' }
+		);
+		const cityName = await response.json();
+		//display the city name
+		displayCity.innerText = `${cityName[0].name}, ${cityName[0].country}`;
+	} catch (error) {
+		alert(
+			'Sorry, there was an error on the city name data. Please try again later.'
+		);
+	}
 }
 
 // site load
