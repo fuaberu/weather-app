@@ -51,6 +51,7 @@ function cToF(value) {
 async function getData(lat, lon) {
 	loader.style.opacity = 1;
 	loader.style.display = 'block';
+	console.log('trying')
 	try {
 		const response = await fetch(
 			`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
@@ -61,6 +62,7 @@ async function getData(lat, lon) {
 		displayWeather(data);
 		setTimeout(() => {
 			loader.style.opacity = 0;
+			loader.style.display = 'none';
 		}, 1000);
 	} catch (error) {
 		alert(
@@ -110,7 +112,6 @@ function handleSettingsForm(e) {
 	// look at all the contents
 	for (let key of settingsData.keys()) {
 		dataArray.push(settingsData.get(key));
-		// console.log(key, settingsData.get(key));
 	}
 	convertValue(dataArray);
 }
