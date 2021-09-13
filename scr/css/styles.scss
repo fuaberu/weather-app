@@ -31,7 +31,7 @@ h2 {
 	font-size: 1.8rem;
 }
 h3 {
-	font-size: 1.4rem;
+	font-size: 1.2rem;
 }
 h4,
 h5 {
@@ -268,6 +268,7 @@ h5 {
 	display: none;
 }
 .weather-display-container {
+	user-select: none;
 	margin: auto;
 	h1 {
 		font-size: 2rem;
@@ -347,6 +348,7 @@ h5 {
 	}
 }
 .weekday-container {
+	user-select: none;
 	display: grid;
 	grid-template-columns: repeat(7, 14.2%);
 	padding: 1rem;
@@ -377,6 +379,7 @@ h5 {
 	}
 }
 .weather-hourly-container {
+	user-select: none;
 	padding: 1rem;
 	width: auto;
 	overflow-x: auto;
@@ -398,6 +401,7 @@ h5 {
 	}
 }
 .general-information-container {
+	user-select: none;
 	width: fit-content;
 	margin: 2rem auto;
 	display: grid;
@@ -412,6 +416,14 @@ h5 {
 	h3 {
 		font-size: 1rem;
 	}
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-thumb:vertical {
+	background: rgb(75, 75, 75);
+	border-radius: 10px;
 }
 
 @media only screen and (min-width: 500px) {
@@ -449,11 +461,6 @@ h5 {
 	// scrollbars
 	::-webkit-scrollbar {
 		height: 8px;
-		width: 10px;
-	}
-	::-webkit-scrollbar-thumb:vertical {
-		background: rgb(75, 75, 75);
-		border-radius: 10px;
 	}
 	::-webkit-scrollbar-thumb:horizontal {
 		background: rgb(75, 75, 75);
@@ -462,7 +469,7 @@ h5 {
 }
 @media only screen and (min-width: 1200px) {
 	.weather-display-container {
-		margin-bottom: 3rem;
+		margin-bottom: 2.5rem;
 	}
 	.weather-hourly-container .hourly-weather:not(:last-child) {
 		margin-right: 5rem;
