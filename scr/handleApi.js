@@ -141,7 +141,7 @@ function convertValue(value) {
 // form city name convert to geolocation
 async function getCityCoordinates(city) {
 	const response = await fetch(
-		`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
+		`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=ac42c7f77039422737761129cd9e34f8`,
 		{ mode: 'cors' }
 	);
 	const cityCoordinates = await response.json();
