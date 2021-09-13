@@ -257,9 +257,6 @@ h5 {
 	#military-time:checked + .form-label {
 		background: rgb(113, 144, 245);
 		color: white;
-		&:hover {
-			background: rgb(119, 114, 199);
-		}
 	}
 }
 // set popups as display none
@@ -439,9 +436,6 @@ h5 {
 	}
 }
 @media only screen and (min-width: 900px) {
-	html {
-		font-size: 20px;
-	}
 	.new-city-time,
 	.city-name-container {
 		width: 95vw;
@@ -467,9 +461,6 @@ h5 {
 	}
 }
 @media only screen and (min-width: 1200px) {
-	html {
-		font-size: 22px;
-	}
 	.weather-display-container {
 		margin-bottom: 3rem;
 	}
