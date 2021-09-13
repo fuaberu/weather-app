@@ -2,10 +2,10 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-size: 12px;
 }
 body,
 html {
+	font-size: 12px;
 	font-family: 'Open Sans', sans-serif;
 	height: 100%;
 }
@@ -418,14 +418,6 @@ h5 {
 	}
 }
 
-::-webkit-scrollbar {
-	width: 10px;
-}
-::-webkit-scrollbar-thumb:vertical {
-	background: rgb(75, 75, 75);
-	border-radius: 10px;
-}
-
 @media only screen and (min-width: 500px) {
 	html {
 		font-size: 14px;
@@ -458,7 +450,13 @@ h5 {
 	// scrollbars
 	::-webkit-scrollbar {
 		height: 8px;
+		width: 10px;
 	}
+	::-webkit-scrollbar-thumb:vertical {
+		background: rgb(75, 75, 75);
+		border-radius: 10px;
+	}
+
 	::-webkit-scrollbar-thumb:horizontal {
 		background: rgb(75, 75, 75);
 		border-radius: 10px;
@@ -490,6 +488,6 @@ h5 {
 		margin-bottom: 3rem;
 	}
 	.general-information-container {
-		margin: 4rem;
+		margin: 4rem auto;
 	}
 }
