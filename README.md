@@ -18,7 +18,7 @@ Tecnologies
 -------
 
 - HTML
-- CSS
+- SCSS
 - JAVASCRIPT
 
 Others
