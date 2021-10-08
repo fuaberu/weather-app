@@ -95,19 +95,13 @@
 								checked="checked"
 							/>
 							<label class="form-label" for="celsius">Celsius - C°</label><br />
-							<input
-								type="radio"
-								id="fahrenheit"
-								name="Temperature"
-								value="fahrenheit"
-							/>
+							<input type="radio" id="fahrenheit" name="Temperature" value="fahrenheit" />
 
-							<label class="form-label" for="fahrenheit">Fahrenheit - F°</label
-							><br />
+							<label class="form-label" for="fahrenheit">Fahrenheit - F°</label><br />
 							<div class="flex">
 								<button
 									class="apply"
-									onclick="closeForm('temperature-form')"
+									onclick="closeForm('temperature-form'); update();"
 									type="submit"
 								>
 									Apply
@@ -124,42 +118,23 @@
 						<button type="button" onclick="openPopup('wind-form')">Wind</button>
 						<div id="wind-form" class="form-container">
 							<input type="radio" id="m-s" name="wind" value="m/s" />
-							<label class="form-label" for="m-s">Meters per second - m/s</label
-							><br />
-							<input
-								type="radio"
-								id="km-h"
-								name="wind"
-								value="km/h"
-								checked="checked"
-							/>
-							<label class="form-label" for="km-h"
-								>Kilometers per hour - km/h</label
+							<label class="form-label" for="m-s">Meters per second - m/s</label><br />
+							<input type="radio" id="km-h" name="wind" value="km/h" checked="checked" />
+							<label class="form-label" for="km-h">Kilometers per hour - km/h</label
 							><br />
 							<input type="radio" id="ft-s" name="wind" value="ft/s" />
-							<label class="form-label" for="ft-s">Feet per second - ft/s</label
-							><br />
+							<label class="form-label" for="ft-s">Feet per second - ft/s</label><br />
 							<input type="radio" id="mi-h" name="wind" value="mi/h" />
-							<label class="form-label" for="mi-h">Miles per hour - mi/h</label
-							><br />
+							<label class="form-label" for="mi-h">Miles per hour - mi/h</label><br />
 							<input type="radio" id="kts" name="wind" value="kts" />
-							<label class="form-label" for="kts"
-								>Nautical miles per hour - kts</label
+							<label class="form-label" for="kts">Nautical miles per hour - kts</label
 							><br />
 
 							<div class="flex">
-								<button
-									class="apply"
-									onclick="closeForm('wind-form')"
-									type="submit"
-								>
+								<button class="apply" onclick="closeForm('wind-form'); update();" type="submit">
 									Apply
 								</button>
-								<button
-									class="cancel"
-									type="button"
-									onclick="closeForm('wind-form')"
-								>
+								<button class="cancel" type="button" onclick="closeForm('wind-form')">
 									Close
 								</button>
 							</div>
@@ -182,7 +157,7 @@
 							<div class="flex">
 								<button
 									class="apply"
-									onclick="closeForm('visibility-form')"
+									onclick="closeForm('visibility-form'); update();"
 									type="submit"
 								>
 									Apply
@@ -200,29 +175,14 @@
 						<div id="time-form" class="form-container">
 							<input type="radio" id="pm-am" name="time" value="12h" />
 							<label class="form-label" for="pm-am">12h clock</label><br />
-							<input
-								type="radio"
-								id="military-time"
-								name="time"
-								value="24h"
-								checked
-							/>
-							<label class="form-label" for="military-time">24h clock</label
-							><br />
+							<input type="radio" id="military-time" name="time" value="24h" checked />
+							<label class="form-label" for="military-time">24h clock</label><br />
 
 							<div class="flex">
-								<button
-									class="apply"
-									onclick="closeForm('time-form')"
-									type="submit"
-								>
+								<button class="apply" onclick="closeForm('time-form'); update();" type="submit">
 									Apply
 								</button>
-								<button
-									class="cancel"
-									type="button"
-									onclick="closeForm('time-form')"
-								>
+								<button class="cancel" type="button" onclick="closeForm('time-form')">
 									Close
 								</button>
 							</div>

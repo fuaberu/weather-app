@@ -9,8 +9,7 @@ function closeForm(id) {
 
 // make the scroll effect
 const discriptions = document.querySelectorAll('.today-discription');
-const discriptionWidth =
-	document.querySelector('.weekday-container').offsetWidth / 6;
+const discriptionWidth = document.querySelector('.weekday-container').offsetWidth / 6;
 function scrollDiscription() {
 	for (let i = 0; i < discriptions.length; i++) {
 		if (discriptions[i].innerText.split('').length * 6 >= discriptionWidth) {
@@ -26,7 +25,6 @@ function takeScroll() {
 }
 
 function ChangeBackground(sunrise, sunset, weather, time, background) {
-	console.log(sunrise, sunset, weather, time, background);
 	if (
 		// day sky clear colors
 		time > sunrise + 1 * 3600 &&
@@ -83,8 +81,8 @@ function ChangeBackground(sunrise, sunset, weather, time, background) {
 	}
 	if (
 		// night clear colors
-		(time > sunset &&
-		weather === 'clear') || (time < sunrise && weather === 'clear')
+		(time > sunset && weather === 'clear') ||
+		(time < sunrise && weather === 'clear')
 	) {
 		background.style.background =
 			'linear-gradient(0deg, rgba(24,80,136,1) 20%, rgba(8,30,99,1) 55%, rgba(0,10,38,1) 91%)';

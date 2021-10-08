@@ -42,6 +42,9 @@ let wind = 'km/h';
 let visibilityCheck = 'km';
 let timeCheck = '24h';
 
+let currentLat = 0;
+let currentLon = 0;
+
 //converter
 function cToF(value) {
 	return (value * 9) / 5 + 32;
@@ -51,7 +54,9 @@ function cToF(value) {
 async function getData(lat, lon) {
 	loader.style.opacity = 1;
 	loader.style.display = 'block';
-	console.log('trying')
+	console.log('trying');
+	currentLon = lon;
+	currentLat = lat;
 	try {
 		const response = await fetch(
 			`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=metric&appid=ac42c7f77039422737761129cd9e34f8`,
@@ -65,9 +70,7 @@ async function getData(lat, lon) {
 			loader.style.display = 'none';
 		}, 1000);
 	} catch (error) {
-		alert(
-			'Sorry, there was an error on the weather data. Please try again later.'
-		);
+		alert('Sorry, there was an error on the weather data. Please try again later.');
 	}
 }
 
@@ -82,9 +85,7 @@ async function getCity(lat, lon) {
 		//display the city name
 		displayCity.innerText = `${cityName[0].name}, ${cityName[0].country}`;
 	} catch (error) {
-		alert(
-			'Sorry, there was an error on the city name data. Please try again later.'
-		);
+		alert('Sorry, there was an error on the city name data. Please try again later.');
 	}
 }
 
@@ -94,9 +95,7 @@ getData(51.5098, -0.118);
 //-------functions------//
 // settings form data
 document.addEventListener('DOMContentLoaded', () => {
-	document
-		.getElementById('settingsForm')
-		.addEventListener('submit', handleSettingsForm);
+	document.getElementById('settingsForm').addEventListener('submit', handleSettingsForm);
 	document
 		.getElementById('city-location-input')
 		.addEventListener('submit', handleCityNameForm);
@@ -249,13 +248,9 @@ function dayWeek(data) {
 	//day max min
 	for (let i = 0; i < todayMaxMin.length; i++) {
 		todayMaxMin[i].innerText = `${Math.round(
-			temperature === 'celsius'
-				? data.daily[i].temp.max
-				: cToF(data.daily[i].temp.max)
+			temperature === 'celsius' ? data.daily[i].temp.max : cToF(data.daily[i].temp.max)
 		)}\xB0 / ${Math.round(
-			temperature === 'celsius'
-				? data.daily[i].temp.min
-				: cToF(data.daily[i].temp.min)
+			temperature === 'celsius' ? data.daily[i].temp.min : cToF(data.daily[i].temp.min)
 		)}\xB0`;
 	}
 
@@ -274,19 +269,21 @@ function dayWeek(data) {
 
 //-------display hours------//
 
-function hourly(data, cityTime) {
+function hourly(data) {
+	const now = new Date();
+	const utc = now.toISOString();
+	const utcTimeStamp = Date.parse(utc);
+	const cityTime = utcTimeStamp + data.timezone_offset * 1000;
+
 	for (let i = 0; i < hour.length; i++) {
 		let date = cityTime + i * 3600000;
 		let hourDisplay = new Date(date).toISOString().slice(11, -11);
-		hour[i].innerText =
-			timeCheck === '12h' ? convertTime(hourDisplay) : hourDisplay;
+		hour[i].innerText = timeCheck === '12h' ? convertTime(hourDisplay) : hourDisplay;
 	}
 
 	for (let i = 0; i < hourTemp.length; i++) {
 		hourTemp[i].innerText = `${Math.round(
-			temperature === 'celsius'
-				? data.hourly[i].temp
-				: cToF(data.hourly[i].temp)
+			temperature === 'celsius' ? data.hourly[i].temp : cToF(data.hourly[i].temp)
 		)}\xB0`;
 	}
 
@@ -311,9 +308,7 @@ function generalInformatio(data) {
 
 	//display current feeling temperature
 	feelsLike.innerText = `${Math.round(
-		temperature === 'celsius'
-			? data.current.feels_like
-			: cToF(data.current.feels_like)
+		temperature === 'celsius' ? data.current.feels_like : cToF(data.current.feels_like)
 	)}\xB0`;
 
 	//wind direction
@@ -400,7 +395,6 @@ function generalInformatio(data) {
 //-------display data in the ui------//
 
 function displayWeather(data) {
-	// city values
 	// time
 	const now = new Date();
 	const utc = now.toISOString();
@@ -425,12 +419,12 @@ function displayWeather(data) {
 		} else if (timeCheck === '24h') {
 			displayTime.innerText = cityTimeUtc.slice(11, -8);
 		}
-		//update the ui every 1 sec to change settings
-		displayCurrent(data);
-		dayWeek(data);
-		hourly(data, cityTime);
-		generalInformatio(data);
 	}, 1000);
+
+	displayCurrent(data);
+	dayWeek(data);
+	hourly(data, cityTime);
+	generalInformatio(data);
 
 	// stop interval
 	function stopInterval() {
@@ -454,4 +448,8 @@ function displayWeather(data) {
 		data.current.dt,
 		main
 	);
+}
+
+function update() {
+	getData(currentLat, currentLon);
 }
