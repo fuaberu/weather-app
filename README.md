@@ -4,6 +4,8 @@ Weather-app is an application design to be easy to use as it contains all the in
 
 The website can be accessed through [this link](https://weather-visualiser.netlify.app/)
 
+![Weather-app screenshot](https://github.com/fuaberu/my-portfolio/blob/3485346a3dc38558c313d1d0d402c62e8ea0e32d/src/assets/weather.png)
+
 Features
 --------
 
